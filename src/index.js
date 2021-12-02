@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import Routing from './Routing';
+import { store } from './store';
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Routing />
+  </Provider>,
   document.getElementById('root')
 );
 

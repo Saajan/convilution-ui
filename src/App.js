@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav className="bg-white py-2 md:py-4 shadow-md">
+        <div className="container px-4 mx-auto md:flex md:items-center">
+          <div className="flex justify-between items-center w-screen">
+            <div className="text-2xl font-bold">Convilution</div>
+            <button className="border border-solid border-gray-600 px-3 py-1 rounded">
+              Create Dashboard
+            </button>
+          </div>
+        </div>
+      </nav>
+      <Outlet />
     </div>
   );
 }
