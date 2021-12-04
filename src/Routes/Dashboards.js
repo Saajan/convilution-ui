@@ -8,10 +8,10 @@ const Dashboards = () => {
     return <div className="container mx-auto m-8">
         <h2 className="text-l font-bold">Dashboards</h2>
         <div className="flex w-full">
-            {Object.entries(dashboards).map(([key,]) => {
-                return <Link to={`${key}`} key={key} className="w-1/4 h-32 m-4 bg-red-500 flex justify-center items-center hover:bg-red-700 rounded">
+            {dashboards.map((dashboard, index) => {
+                return <Link to={`${dashboard.id}`} key={index} className="w-1/4 h-32 m-4 bg-red-500 flex justify-center items-center hover:bg-red-700 rounded">
                     <div className="text-white font-bold">
-                        Dashboard {key}
+                        {dashboard.name}
                     </div>
                 </Link>
             })}
