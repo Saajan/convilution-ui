@@ -6,6 +6,7 @@ import { store } from './store';
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import './index.css';
+import 'antd/dist/antd.css'; 
 
 import reportWebVitals from './reportWebVitals';
 
