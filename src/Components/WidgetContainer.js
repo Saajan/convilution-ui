@@ -22,6 +22,10 @@ const WidgetContainer = ({ widgets, setIsOpen }) => {
         navigate(`/widget/${widgetId}`);
     };
 
+    const onCreateWidgetClick = () => {
+        setIsOpen(false);
+        navigate('/widget/create');
+    }
     return (
         <div className="widget-container mx-10 h-full">
             <div className="h-full">
@@ -66,7 +70,7 @@ const WidgetContainer = ({ widgets, setIsOpen }) => {
                 </div>
             </div>
             <div>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Widget</button>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => onCreateWidgetClick()}>Create Widget</button>
             </div>
         </div>
     );

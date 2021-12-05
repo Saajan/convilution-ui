@@ -59,7 +59,8 @@ const Widget3 = () => {
   return (
     <div>
       <div>
-        <div className="p-1 font-bold text-center">Least 10 Apple OS attempts in last month</div>
+        <div className="p-1 font-bold text-center">Device OS Versions Usage</div>
+        <div className="p-1 text-center">Tabular data filtered based on user input</div>
         <Table columns={columns} dataSource={data} />
       </div>
     </div>

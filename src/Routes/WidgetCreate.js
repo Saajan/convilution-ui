@@ -59,7 +59,9 @@ const WidgetCreate = () => {
             window.setFormValue('xaxis', ['CIRR']);
             window.setFormValue('yaxis', ['Live', 'VoD']);
             window.setFormValue('chart', 'Line Chart');
-            window.setFormValue('name', 'My Widget 1');
+            window.setFormValue('name', 'Player-wise CIRR on Live and VoD');
+            window.setFormValue('limit', '6');
+            window.setFormValue('description', 'Double line graph for easy comparison');
             window.setFormValue('filter', 'Player Framework Name');
             window.setFormValue('type', 'custom');
         }        
@@ -100,7 +102,7 @@ const WidgetCreate = () => {
                                     <div className="pb-2"><label>Query</label></div>
                                     <div className="block w-full grid grid-cols-12">
                                         <input
-                                            className="w-full shadow-sm sm:text-sm rounded-sm  px- 2 border border-black-900 col-span-11"
+                                            className="w-full shadow-sm sm:text-sm rounded-sm px-2 border border-black-900 col-span-11"
                                             value={query}
                                             type="text"
                                             onChange={handleChange}
@@ -119,6 +121,16 @@ const WidgetCreate = () => {
                                             component={InputText}
                                             type="text"
                                             placeholder="Widget Name"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="p-2">
+                                    <div><label>Widget Description</label></div>
+                                    <div>
+                                        <Field
+                                            name="description"
+                                            component={InputText}
+                                            type="text"
                                         />
                                     </div>
                                 </div>
@@ -203,6 +215,16 @@ const WidgetCreate = () => {
                                     }
                                     </FieldArray>
                                     <AddButton lable="Add more Y axis" onClick={() => push('yaxis', undefined)}/>
+                                </div>
+                                <div className="p-2">
+                                    <div><label>Limit</label></div>
+                                    <div>
+                                        <Field
+                                            name="limit"
+                                            component={InputText}
+                                            type="text"
+                                        />
+                                    </div>
                                 </div>
                                 <div className="p-2">
                                     <button 
