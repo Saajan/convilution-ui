@@ -11,6 +11,7 @@ import { XCircleIcon } from '@heroicons/react/solid'
 import { TableIcon, CheckCircleIcon } from '@heroicons/react/solid'
 
 const options=["Line Chart","Bar Chart","Pie Chart"];
+const filterOptions = ["Assets", "CDN", "Player Framework Name", "Channel", "Device Type", "Device OS"];
 
 const WidgetCreate = () => {
     let navigate = useNavigate();
@@ -26,27 +27,27 @@ const WidgetCreate = () => {
             metric: value.metric,
             data: [
                 {
-                    month: "Nov",
+                    date: "5 December",
                     CIRR:  0.2
                 },
                 {
-                    month: "Oct",
+                    date: "4 December",
                     CIRR:  0.1
                 },
                 {
-                    month: "Sep",
+                    date: "3 December",
                     CIRR:  0.35
                 },
                 {
-                    month: "Aug",
+                    date: "2 December",
                     CIRR:  0.15
                 },
                 {
-                    month: "July",
+                    date: "1 December",
                     CIRR:  0.24
                 },
                 {
-                    month: "June",
+                    date: "30 November",
                     CIRR:  0.11
                 },
             ]
@@ -54,9 +55,14 @@ const WidgetCreate = () => {
     }
     const evaluate = () => {
         console.log(query);
-        window.setFormValue('xaxis', ['CIRR','VPF']);
-        window.setFormValue('yaxis', ['Monthly']);
-        window.setFormValue('Type', 'Bar Chart');
+        if(query.startsWith('C')) {
+            window.setFormValue('xaxis', ['CIRR']);
+            window.setFormValue('yaxis', ['Live', 'VoD']);
+            window.setFormValue('chart', 'Line Chart');
+            window.setFormValue('name', 'My Widget 1');
+            window.setFormValue('filter', 'Player Framework Name');
+            window.setFormValue('type', 'custom');
+        }        
     }
     const handleChange = function(e) {
         setQuery(e.target.value);
@@ -70,6 +76,7 @@ const WidgetCreate = () => {
       <Form
         onSubmit={onSubmit}
         initialValues={{
+            type: 'shared'
         }}
         mutators={{
             setValue: ([field, value], state, { changeValue }) => {
@@ -123,6 +130,19 @@ const WidgetCreate = () => {
                                             component="select"
                                         >
                                             {options.map( opt => (
+                                                <option key={opt} value={opt}>{opt}</option>
+                                            ))}
+                                        </Field>
+                                    </div>
+                                </div>
+                                <div className="p-2 grid grid-cols-2">
+                                    <div><label>Filter</label></div>
+                                    <div>
+                                        <Field
+                                            name="filter"
+                                            component="select"
+                                        >
+                                            {filterOptions.map( opt => (
                                                 <option key={opt} value={opt}>{opt}</option>
                                             ))}
                                         </Field>
