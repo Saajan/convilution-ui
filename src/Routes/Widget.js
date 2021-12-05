@@ -38,6 +38,10 @@ function Widget() {
         showModal(true);
     };
 
+    const createAlert = () => {
+        alert('Alert');
+    };
+
     return (
         <div className="w-full h-full border border-grey-500 m-2">
             <ScreenCapture onEndCapture={handleScreenCapture}>
@@ -48,9 +52,11 @@ function Widget() {
                                 <Option value="multiline">MultiLine</Option>
                                 <Option value="multiline-area">Multiline Area</Option>
                                 <Option value="stacked-bar">Stacked Bar</Option>
+                                <Option value="category-stacked">Category Stacked Bar</Option>
                             </Select>
                             <button className="ml-2 border py-1 px-2 rounded">Share</button>
                             <button className="ml-2 border py-1 px-2 rounded" onClick={onStartCapture}>Annotate</button>
+                            <button className="ml-2 border py-1 px-2 rounded" onClick={createAlert}>Alert</button>
                         </header>
 
                         <MainWidget widgetId={widgetId} url={true} chartType={chartType} />

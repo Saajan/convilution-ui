@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useState, } from "react";
 import GridLayout from "react-grid-layout";
-import MainWidget from './MainWidget';
+import GridWidget from './GridWidget';
 
 const GridLayoutComponent = (props) => {
     const { data, bounds: parent, mode } = props;
@@ -27,10 +27,10 @@ const GridLayoutComponent = (props) => {
                         i: item._id,
                     }}>
                         <div className="grid-item__title component-title">
-                            <div>{item.name}</div>
+                            {item.title}
                         </div>
                         <div className="grid-item__graph">
-                            <MainWidget widgetId={item._id} />
+                            <GridWidget widgetId={item._id} item={item}/>
                         </div>
                     </div>
                 )

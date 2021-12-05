@@ -2,51 +2,11 @@ import React, { Fragment, useEffect, useState } from 'react';
 import useMeasure from 'react-use-measure';
 import http from '../http';
 import Widget3 from '../Components/Widget3';
+import { getChartOptions_1 } from '../utils/livevod';
 import ReactECharts from 'echarts-for-react';
 
-const getChartOptions_1 = (options) => {
-    return {
-        xAxis: {
-            type: 'category',
-            boundaryGap: true,
-            data: ['ExoPlayer', 'HTML5', 'UWPMediaPlayer', 'AVFoundation', 'Roku Scene Graph', 'DSS-HLS']
-        },
-        yAxis: {
-            type: 'value',
-            name: 'CIRR',
-            nameLocation: 'middle',
-            nameGap: 50
-        },
-        series: [
-            {
-                name: "Live",
-                type: 'line',
-                data: [0.67, 0.78, 0.87, 1.5, 0.92, 1.5],
-                label: {
-                    show: true,
-                    position: 'top'
-                },
-            },
-            {
-                name: "VoD",
-                type: 'line',
-                data: [2, 2.78, 3.87, 0.76, 1.2, 0.9],
-                label: {
-                    show: true,
-                    position: 'top'
-                },
-            }
-        ],
-        legend: {
-            data: ['Live', 'VoD']
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        ...options,
-    }
-}
-const getChartOptions_2 = (options) => {
+
+const getChartOptions_2 = (options, chartType) => {
     return {
         xAxis: {
             type: 'category',
@@ -85,7 +45,7 @@ const getChartOptions_2 = (options) => {
     }
 }
 
-const getChartOptions = (widgetData) => {
+const getChartOptions = (widgetData, chartType) => {
     const options = {};
 
     options.title = {
@@ -93,9 +53,9 @@ const getChartOptions = (widgetData) => {
     };
 
     if (widgetData.name && widgetData.name.startsWith("Player-wise")) {
-        return getChartOptions_1(options);
+        return getChartOptions_1(options, chartType);
     } else if (widgetData.name && widgetData.name.startsWith("CIRR")) {
-        return getChartOptions_2(options);
+        return getChartOptions_2(options, chartType);
     }
     return options;
 }
@@ -119,21 +79,19 @@ function Widget({ widgetId, url, chartType }) {
     useEffect(() => {
         setTimeout(() => {
             setRerender(true);
-        }, 3000);
+        }, 1000);
     }, []);
-
-    console.log(bounds);
 
     if (!rerender) {
         return <div>Loading</div>
     }
 
-    const actualHeight = url ? '80vh' : bounds.height - 30;
+    const actualHeight = url ? '80vh' : bounds.height - 50;
 
     return (
         <div className="m-2 w-full h-full" ref={ref}>
             <Fragment>
-                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData)} style={{ height: actualHeight, width: "100%" }} />}
+                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData, chartType)} style={{ height: actualHeight, width: "100%" }} />}
             </Fragment>
             <Fragment>
                 {chartData !== {} && chartData.chart === 'table' && <Widget3 />}
