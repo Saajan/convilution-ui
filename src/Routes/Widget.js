@@ -7,11 +7,10 @@ function Widget() {
     return (
         <div className="w-full border border-grey-500 m-2">
             <div>
-            <MainWidget widgetId={widgetId}/>
+                <MainWidget widgetId={widgetId} />
             </div>
         </div>
     );
 }
-
 
 export default Widget;
