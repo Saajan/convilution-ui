@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 
 const Dashboards = () => {
     const dashboards = useSelector(state => state.dashboards.dashboards);
-    console.log(dashboards);
     return <div className="container mx-auto m-8">
         <h2 className="text-l font-bold">Dashboards</h2>
         <div className="flex w-full">

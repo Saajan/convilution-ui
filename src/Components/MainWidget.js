@@ -1,4 +1,4 @@
-import React, { Fragment,useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import useMeasure from 'react-use-measure';
 import http from '../http';
 import Widget3 from '../Components/Widget3';
@@ -15,7 +15,7 @@ const getChartOptions_1 = (options) => {
             type: 'value',
             name: 'CIRR',
             nameLocation: 'middle',
-            nameGap: 50      
+            nameGap: 50
         },
         series: [
             {
@@ -57,7 +57,7 @@ const getChartOptions_2 = (options) => {
             type: 'value',
             name: 'Avg. Duration',
             nameLocation: 'middle',
-            nameGap: 50        
+            nameGap: 50
         },
         series: [
             {
@@ -100,7 +100,7 @@ const getChartOptions = (widgetData) => {
     return options;
 }
 
-function Widget({ widgetId, url }) {
+function Widget({ widgetId, url, chartType }) {
     const [chartData, setChartData] = useState({});
     const [rerender, setRerender] = useState(false);
 
@@ -133,7 +133,7 @@ function Widget({ widgetId, url }) {
     return (
         <div className="m-2 w-full h-full" ref={ref}>
             <Fragment>
-                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData)} style={{ height: actualHeight, width: "100%" }}/>}
+                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData)} style={{ height: actualHeight, width: "100%" }} />}
             </Fragment>
             <Fragment>
                 {chartData !== {} && chartData.chart === 'table' && <Widget3 />}

@@ -77,6 +77,12 @@ code {
   color: #777;
 }
 
-.drawer-widget{
+.drawer-widget {}
 
+.ant-modal,
+.ant-modal-content {
+  height: 600px;
+  width: 70%!important;
+  margin: 0 auto;
+  top: 0;
 }
