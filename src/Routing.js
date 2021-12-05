@@ -21,7 +21,7 @@ function Routing() {
             <Route path="widget/:widgetId" element={<Widget />} />
         </Route>
       </Routes>
-    </BrowserRouter >
+    </BrowserRouter>
   );
 }
 
