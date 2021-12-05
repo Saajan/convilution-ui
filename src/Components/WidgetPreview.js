@@ -6,9 +6,9 @@ const WidgetPreview = (props) => {
   const {axis, metric, data} = props;
   const columns = [
     {
-      title: 'Month',
-      dataIndex: 'month',
-      key: 'month',
+      title: 'Date',
+      dataIndex: 'date',
+      key: 'date',
       render: text => <a>{text}</a>,
     },
     {
