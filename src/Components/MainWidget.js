@@ -84,7 +84,6 @@ const getChartOptions = (widgetData) => {
 }
 
 function Widget({ widgetId, bounds }) {
-    const { widgetId } = useParams();
     const [chartData, setChartData] = useState({});
     const [rerender, setRerender] = useState(false);
 
@@ -111,9 +110,9 @@ function Widget({ widgetId, bounds }) {
     }
 
     return (
-        <div className="w-full border border-grey-500 m-2">
+        <div className="m-2">
             <div>
-                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData)} style={{ height: bounds.height, width: "100%" }}/>}
+                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData)} style={{ height: 300, width: "100%" }}/>}
             </div>
             <div>
                 {chartData !== {} && chartData.chart === 'table' && <Widget3 />}
