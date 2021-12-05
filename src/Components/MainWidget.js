@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import React, { Fragment,useEffect, useState } from 'react';
+import useMeasure from 'react-use-measure';
 import http from '../http';
 import Widget3 from '../Components/Widget3';
 import ReactECharts from 'echarts-for-react';
-import { DotsVerticalIcon } from '@heroicons/react/solid'
 
 const getChartOptions_1 = (options) => {
     return {
@@ -101,9 +100,11 @@ const getChartOptions = (widgetData) => {
     return options;
 }
 
-function Widget({ widgetId, bounds }) {
+function Widget({ widgetId, url }) {
     const [chartData, setChartData] = useState({});
     const [rerender, setRerender] = useState(false);
+
+    const [ref, bounds] = useMeasure()
 
     useEffect(() => {
         getChartMeta(widgetId);
@@ -127,14 +128,16 @@ function Widget({ widgetId, bounds }) {
         return <div>Loading</div>
     }
 
+    const actualHeight = url ? '80vh' : bounds.height - 30;
+
     return (
-        <div className="m-2">
-            <div>
-                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData)} style={{ height: 300, width: "100%" }}/>}
-            </div>
-            <div>
+        <div className="m-2 w-full h-full" ref={ref}>
+            <Fragment>
+                {chartData !== {} && chartData.chart !== 'table' && <ReactECharts option={getChartOptions(chartData)} style={{ height: actualHeight, width: "100%" }}/>}
+            </Fragment>
+            <Fragment>
                 {chartData !== {} && chartData.chart === 'table' && <Widget3 />}
-            </div>
+            </Fragment>
         </div>
     );
 }
