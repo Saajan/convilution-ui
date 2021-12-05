@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import widgetSlice from '../Reducer/widgetSlice';
+import WidgetContainer from './WidgetContainer';
 import http from '../http';
 
 const Drawer = ({ isOpen, setIsOpen }) => {
@@ -19,8 +20,6 @@ const Drawer = ({ isOpen, setIsOpen }) => {
     useEffect(() => {
         dispatch(fetchWidgets());
     }, []);
-
-    console.log(widgets);
 
     if (widgets.length === 0) {
         return <div>Loading...</div>
@@ -43,7 +42,9 @@ const Drawer = ({ isOpen, setIsOpen }) => {
             >
                 <article className="relative w-screen max-w-lg pb-10 flex flex-col space-y-6 overflow-y-scroll h-full">
                     <header className="p-4 font-bold text-lg">Widgets</header>
-
+                    <div>
+                        <WidgetContainer widgets={widgets} setIsOpen={setIsOpen}/>
+                    </div>
                 </article>
             </section>
             <section
