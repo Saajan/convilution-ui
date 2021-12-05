@@ -27,22 +27,27 @@ code {
   padding: 4px 0;
   text-align: center;
 }
+
 .grid-item__title:hover {
   cursor: move;
 }
+
 .grid-item__title .panel {
   box-shadow: none;
   border: none;
 }
+
 .grid-item__title .panel:focus {
   outline: none;
 }
+
 .grid-item__title .panel-heading {
   padding: 3px 0;
   background: #171819;
   border: none;
   color: rgba(255, 255, 255, 0.7);
 }
+
 .grid-item__title .panel-body {
   padding: 0 0 0 15px;
   background: #171819;
@@ -53,7 +58,21 @@ code {
   flex: 1;
 }
 
-.react-grid-item > .react-resizable-handle::after {
+.react-grid-item>.react-resizable-handle::after {
   border-right-color: rgba(255, 255, 255, 0.5);
   border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+
+.component-container {
+  padding: 10px;
+  overflow: auto;
+
+}
+
+.component-header .component-title {
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #777;
 }

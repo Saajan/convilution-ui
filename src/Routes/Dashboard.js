@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import useMeasure from 'react-use-measure';
 import http from '../http';
 import GridLayout from '../Components/GridLayout';
 
@@ -8,6 +9,7 @@ const Dashboard = () => {
     const [currentDashboard, setCurrentDashboard] = useState({});
     let params = useParams();
     const dashboards = useSelector(state => state.dashboards.dashboards);
+    const [ref, bounds] = useMeasure()
     useEffect(() => {
         if (dashboards && params.dashboardId) {
             setCurrentDashboard(dashboards.find(dashboard => dashboard.id === params.dashboardId));
@@ -24,12 +26,12 @@ const Dashboard = () => {
     } else {
         return <div className="container mx-auto m-8">
             <div className="flex justify-between items-center">
-                <h2 className="text-l font-bold">Dashboard {params.dashboardId}</h2>
+                <h2 className="text-l font-bold">{currentDashboard ? currentDashboard.name : ''}</h2>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={saveDashboard}>Save Dashboard</button>
             </div>
-            <div className="flex w-full h-screen">
+            <div className="flex w-full h-screen" ref={ref}>
                 {currentDashboard ?
-                    <GridLayout data={currentDashboard} />
+                    <GridLayout data={currentDashboard} bounds={bounds} />
                     : <div>
                         Loading
                     </div>

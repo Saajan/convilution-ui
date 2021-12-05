@@ -1,49 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Responsive, WidthProvider } from "react-grid-layout";
-
-import GridItem from "./GridItem";
-
-const ResponsiveGridLayout = WidthProvider(Responsive);
-
-const GridLayout = (props) => {
-    const { data } = props;
-    const [layout, setLayout] = useState([]);
-    const [breakPoint, setBreakPoint] = useState('lg');
-    console.log({ data });
-    const handleBreakPointChange = breakpoint => {
-        setBreakPoint(breakpoint);
-    };
-
-    useEffect(() => {
-        if (data) {
-            setLayout({
-                lg: data.widgets,
-                xs: data.widgets,
-            })
-        }
-    }, [data]);
-
-    if (layout.lg) {
+import React, { Component } from "react";
+import GridLayout from "react-grid-layout";
+class GridLayoutComponent extends Component {
+    render() {
+        const { data, bounds } = this.props;
+        if (!data.widgets) return null;
+        const reversedData = data.widgets.slice().reverse();
         return (
-            <ResponsiveGridLayout
+            <GridLayout
+                width={bounds.width}
                 className="layout"
-                layouts={layout}
-                onBreakpointChange={handleBreakPointChange}
-                isDraggable
-                isRearrangeable
-                isResizable
-                draggableHandle=".grid-item__title"
-                breakpoints={{ lg: 1200, xs: 480 }}
-                cols={{ lg: 12, xs: 3 }}
-                items={12}
+                isDraggable={true}
+                isRearrangeable={true}
+                isResizable={true}
+                cols={12}
                 rowHeight={100}
+                draggableHandle=".grid-item__title"
             >
-                {layout[breakPoint].map(item => <GridItem key={item._id} item={item} />)}
-            </ResponsiveGridLayout>
+                {reversedData.reverse().map((item,index) => {
+                    return (
+                        <div key={item._id} className={`grid-item component-container`} data-grid={{
+                            x: item.x,
+                            y: item.y,
+                            w: item.w,
+                            h: item.h,
+                            i: item._id,
+                        }} >
+                            <div className="grid-item__title component-title">
+                                <div>{item.name}</div>
+                            </div>
+                            <div className="grid-item__graph">
+                                <div className="grid-item__graph-container">
+                                    graph {index}
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
+            </GridLayout>
         );
-    } else {
-        return <div>Loading...</div>
     }
 }
 
-export default GridLayout;
+export default GridLayoutComponent;

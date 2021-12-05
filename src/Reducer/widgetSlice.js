@@ -2,28 +2,27 @@ import {
     createSlice
 } from '@reduxjs/toolkit'
 
-const dashboardSlice = createSlice({
-    name: 'dashboard',
+const widgetSlice = createSlice({
+    name: 'widget',
     initialState: {
         loading: 'idle',
-        dashboards: [],
-        activeDashboard: 0
+        widgets: [],
     },
     reducers: {
-        dashboardsLoading(state, action) {
+        widgetsLoading(state, action) {
             // Use a "state machine" approach for loading state instead of booleans
             console.log("loads");
             if (state.loading === 'idle') {
                 state.loading = 'pending'
             }
         },
-        dashboardsReceived(state, action) {
+        widgetsReceived(state, action) {
             if (state.loading === 'pending') {
                 state.loading = 'idle'
-                state.dashboards = action.payload.results;
+                state.widgets = action.payload.results;
             }
         }
     }
 });
 
-export default dashboardSlice;
+export default widgetSlice;
