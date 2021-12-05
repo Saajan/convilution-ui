@@ -61,7 +61,7 @@ const WidgetCreate = () => {
             window.setFormValue('chart', 'Line Chart');
             window.setFormValue('name', 'My Widget 1');
             window.setFormValue('filter', 'Player Framework Name');
-            window.setFormValue('type', 'NLP');
+            window.setFormValue('type', 'custom');
         }        
     }
     const handleChange = function(e) {
@@ -76,6 +76,7 @@ const WidgetCreate = () => {
       <Form
         onSubmit={onSubmit}
         initialValues={{
+            type: 'shared'
         }}
         mutators={{
             setValue: ([field, value], state, { changeValue }) => {
