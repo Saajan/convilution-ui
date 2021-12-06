@@ -7,6 +7,7 @@ import {
   WidgetCreate,
   Dashboard,
   Widget,
+  DashboardMobile,
 } from './Routes';
 
 function Routing() {
@@ -14,11 +15,12 @@ function Routing() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-            <Route path="dashboard" element={<Dashboards />} />
-            <Route path="dashboard/create" element={<DashboardCreate />} />
-            <Route path="dashboard/:dashboardId" element={<Dashboard/>} />
-            <Route path="widget/create" element={<WidgetCreate />} />
-            <Route path="widget/:widgetId" element={<Widget />} />
+          <Route path="mobile/:dashboardId" element={<DashboardMobile />} />
+          <Route path="dashboard" element={<Dashboards />} />
+          <Route path="dashboard/create" element={<DashboardCreate />} />
+          <Route path="dashboard/:dashboardId" element={<Dashboard />} />
+          <Route path="widget/create" element={<WidgetCreate />} />
+          <Route path="widget/:widgetId" element={<Widget />} />
         </Route>
       </Routes>
     </BrowserRouter>
