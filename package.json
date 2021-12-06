@@ -12,7 +12,6 @@
     "antd": "^4.17.2",
     "autoprefixer": "^9",
     "axios": "^0.24.0",
-    "daisyui": "^1.16.2",
     "echarts": "^5.2.2",
     "echarts-for-react": "^3.0.2",
     "final-form": "^4.20.4",
