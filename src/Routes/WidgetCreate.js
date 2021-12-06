@@ -27,28 +27,34 @@ const WidgetCreate = () => {
             metric: value.metric,
             data: [
                 {
-                    date: "5 December",
-                    CIRR: 0.2
+                    date: "ExoPlayer",
+                    CIRR:  0.67,
+                    Vod: 2
                 },
                 {
-                    date: "4 December",
-                    CIRR: 0.1
+                    date: "HTML5",
+                    CIRR:  0.78,
+                    Vod: 2.78
                 },
                 {
-                    date: "3 December",
-                    CIRR: 0.35
+                    date: "UWPMediaPlayer",
+                    CIRR:  0.87,
+                    Vod: 3.87
                 },
                 {
-                    date: "2 December",
-                    CIRR: 0.15
+                    date: "AVFoundation",
+                    CIRR:  1.5,
+                    Vod: 0.76
                 },
                 {
-                    date: "1 December",
-                    CIRR: 0.24
+                    date: "Roku Scene Graph",
+                    CIRR:  0.92,
+                    Vod: 1.2
                 },
                 {
-                    date: "30 November",
-                    CIRR: 0.11
+                    date: "DSS-HLS",
+                    CIRR:  1.5,
+                    Vod: 0.9
                 },
             ]
         })
