@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  useNavigate,
+    useNavigate,
 } from "react-router-dom";
 import { getSortedWidget } from '../utils/widget';
 
@@ -34,9 +34,15 @@ const WidgetContainer = ({ widgets, setIsOpen }) => {
                     <div>
                         {sortedWidgets.custom.map(widget => {
                             return (
-                                <div key={widget.id} onClick={()=>onWidgetClick(widget.id)} className="cursor-pointer drawer-widget w-full border-2 my-5 border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
-                                    <div className="text-md font-bold">{widget.name}</div>
-                                    <div>{widget.description}</div>
+                                <div key={widget.id} onClick={() => onWidgetClick(widget.id)} className="cursor-pointer drawer-widget w-full border-2 my-5 border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
+                                    <div className="">
+                                        <div className="text-md font-bold">{widget.name}</div>
+                                        <div>{widget.description}</div>
+                                        <div className="flex justify-end">
+                                            <button className="mx-2 px-2 py-1 border rounded bg-green-600  text-white font-bold">ADD</button>
+                                            <button className="mx-2 px-2 py-1 border rounded bg-blue-600  text-white font-bold">EDIT</button>
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         })}
@@ -47,9 +53,15 @@ const WidgetContainer = ({ widgets, setIsOpen }) => {
                     <div>
                         {sortedWidgets.shared.map(widget => {
                             return (
-                                <div key={widget.id} onClick={()=>onWidgetClick(widget.id)} className="cursor-pointer drawer-widget w-full border-2 my-5 border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
-                                    <div className="text-md font-bold">{widget.name}</div>
-                                    <div>{widget.description}</div>
+                                <div key={widget.id} onClick={() => onWidgetClick(widget.id)} className="cursor-pointer drawer-widget w-full border-2 my-5 border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
+                                    <div className="">
+                                        <div className="text-md font-bold">{widget.name}</div>
+                                        <div>{widget.description}</div>
+                                        <div className="flex justify-end">
+                                            <button className="mx-2 px-2 py-1 border rounded bg-green-600  text-white font-bold">ADD</button>
+                                            <button className="mx-2 px-2 py-1 border rounded bg-blue-600  text-white font-bold">EDIT</button>
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         })}
@@ -60,9 +72,15 @@ const WidgetContainer = ({ widgets, setIsOpen }) => {
                     <div>
                         {sortedWidgets.conviva.map(widget => {
                             return (
-                                <div key={widget.id} onClick={()=>onWidgetClick(widget.id)}  className="cursor-pointer drawer-widget w-full border-2 my-5 border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
-                                    <div className="text-md font-bold">{widget.name}</div>
-                                    <div>{widget.description}</div>
+                                <div key={widget.id} onClick={() => onWidgetClick(widget.id)} className="cursor-pointer drawer-widget w-full border-2 my-5 border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
+                                    <div className="">
+                                        <div className="text-md font-bold">{widget.name}</div>
+                                        <div>{widget.description}</div>
+                                        <div className="flex justify-end">
+                                            <button className="mx-2 px-2 py-1 border rounded bg-green-600  text-white font-bold">ADD</button>
+                                            <button className="mx-2 px-2 py-1 border rounded bg-blue-600  text-white font-bold">EDIT</button>
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         })}
