@@ -6,14 +6,20 @@ const WidgetPreview = (props) => {
   const {axis, metric, data} = props;
   const columns = [
     {
-      title: 'Date',
+      title: 'Player',
       dataIndex: 'date',
       key: 'date',
       render: text => <a>{text}</a>,
     },
     {
-      title: metric,
+      title: 'Live',
       dataIndex: 'CIRR',
+      key: 'metric',
+      render: text => <a>{text}</a>,      
+    },
+    {
+      title: 'VoD',
+      dataIndex: 'Vod',
       key: 'metric',
       render: text => <a>{text}</a>,      
     }
