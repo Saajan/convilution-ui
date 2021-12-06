@@ -56,15 +56,9 @@ function App() {
           <div className="flex justify-between items-center w-screen">
             <div className="text-2xl font-bold cursor-pointer" onClick={onHeaderClick}>Convilution</div>
             <div className="flex">
-              <button className="border border-solid border-gray-600 px-3 py-1 rounded mx-5 cursor-pointer">
-                Create Dashboard
-              </button>
               <Dropdown overlay={menu} placement="bottomCenter" arrow>
                 <Button type="primary" shape="circle" icon={<BellOutlined />} />
               </Dropdown>
-              <button className="border border-solid border-gray-600 px-3 py-1 rounded mx-5 cursor-pointer" onClick={() => setIsOpen(true)}>
-                Widgets
-              </button>
             </div>
           </div>
         </div>
