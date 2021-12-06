@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import useMeasure from 'react-use-measure';
 import http from '../http';
+import { Space, Spin } from 'antd';
 import Widget3 from '../Components/Widget3';
 import { getChartOptions_1 } from '../utils/livevod';
 import ReactECharts from 'echarts-for-react';
@@ -83,7 +84,11 @@ function Widget({ widgetId, url, chartType }) {
     }, []);
 
     if (!rerender) {
-        return <div>Loading</div>
+        return <div>
+        <Space size="middle">
+            <Spin size="large" />
+        </Space>
+        </div>
     }
 
     const actualHeight = url ? '80vh' : bounds.height - 50;

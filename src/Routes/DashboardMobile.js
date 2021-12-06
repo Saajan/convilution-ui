@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import useMeasure from 'react-use-measure';
 import http from '../http';
+import { Space, Spin } from 'antd';
 import GridLayoutMobile from '../Components/GridLayoutMobile';
 
 const Dashboard = () => {
@@ -18,7 +19,9 @@ const Dashboard = () => {
     }, [dashboards, params]);
 
     if (dashboards.length <= 0) {
-        return <div>Loading</div>
+        return <Space size="middle">
+            <Spin size="large" />
+        </Space>
     } else {
         return <div className="container mx-auto m-8">
             <div className="flex justify-between items-center">
@@ -26,9 +29,11 @@ const Dashboard = () => {
             </div>
             <div className="flex w-full h-full" ref={ref}>
                 {currentDashboard ?
-                    <GridLayoutMobile data={currentDashboard} bounds={bounds} mode={mode}/>
+                    <GridLayoutMobile data={currentDashboard} bounds={bounds} mode={mode} />
                     : <div>
-                        Loading
+                        <Space size="middle">
+                            <Spin size="large" />
+                        </Space>
                     </div>
                 }
             </div>

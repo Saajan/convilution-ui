@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { Space, Spin } from 'antd';
 import useMeasure from 'react-use-measure';
 import http from '../http';
 import GridLayout from '../Components/GridLayout';
@@ -28,7 +29,11 @@ const Dashboard = () => {
     };
 
     if (dashboards.length <= 0) {
-        return <div>Loading</div>
+        return <div className="container w-full h-screen flex justify-center item-center">
+            <Space size="middle">
+                <Spin size="large" />
+            </Space>
+        </div>
     } else {
         return <div className="container mx-auto m-8">
             <div className="flex justify-between items-center">
@@ -38,9 +43,11 @@ const Dashboard = () => {
             </div>
             <div className="flex w-full h-full" ref={ref}>
                 {currentDashboard ?
-                    <GridLayout data={currentDashboard} bounds={bounds} mode={mode}/>
+                    <GridLayout data={currentDashboard} bounds={bounds} mode={mode} />
                     : <div>
-                        Loading
+                        <Space size="middle">
+                            <Spin size="large" />
+                        </Space>
                     </div>
                 }
             </div>
