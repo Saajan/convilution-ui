@@ -23,7 +23,7 @@ const GridLayoutComponent = (props) => {
                         x: item.x,
                         y: item.y,
                         w: 12,
-                        h: 12,
+                        h: item.h,
                         i: item._id,
                     }}>
                         <div className="grid-item__title component-title">
