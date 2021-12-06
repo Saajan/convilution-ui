@@ -29,7 +29,7 @@ const WidgetPreview = (props) => {
     <div>
       {axis &&
         <div>
-          Preview for {axis} axis, for {metric}
+          Widget data Preview
           <Table columns={columns} dataSource={data} />
         </div>
       }
